@@ -14,8 +14,6 @@ void quicksort(std::vector<int>& nums, int left, int right){
     int pivot = left + rand()%(right-left);
     int num = nums[pivot];
 
-    std::cout << num << std::endl;
-
     int i=left, j=right;
 
     while(i < j){
