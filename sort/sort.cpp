@@ -6,24 +6,22 @@ void swap(int& a, int& b){
     a = b;
     b = tmp;
 }
-// random pivot
+// first pivot
 void quicksort(std::vector<int>& nums, int left, int right){
     if(left >= right)return;
 
     srand(time(0));
-    int pivot = left + rand()%(right-left);
+    int pivot = left;
     int num = nums[pivot];
 
     int i=left, j=right;
 
     while(i < j){
+        while(nums[j] >= num && i < j)j--;
         while(nums[i] <= num && i < j)i++;
         swap(nums[i], nums[j]);
-        while(nums[j] >= num && i < j)j--;
-        swap(nums[i], nums[j]);
     }
-
-    nums[i] = num;
+    swap(nums[pivot], nums[i]);
 
     quicksort(nums, left, i-1);
     quicksort(nums, i+1, right);
