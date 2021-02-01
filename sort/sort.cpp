@@ -1,14 +1,4 @@
-#ifndef _SORT_H
-#define _SORT_H
-#include <bits/stdc++.h>
-#endif
-
-
-void swap(int& a, int& b){
-    int tmp = a;
-    a = b;
-    b = tmp;
-}
+#include "sort.h"
 
 // three road
 void three_quicsort(std::vector<int>& nums, int left, int right){
@@ -21,7 +11,8 @@ void random_quicksort(std::vector<int>& nums, int left, int right){
 
     srand(time(0));
     int pivot = left + rand()%(right-left);
-    int num = nums[pivot];
+    swap(nums[pivot], nums[left]);
+    int num = nums[left];
 
     int i=left, j=right;
 
