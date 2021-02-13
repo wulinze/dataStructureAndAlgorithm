@@ -1,4 +1,10 @@
-#include "sort.h"
+#ifndef _SORT_H
+#define _SORT_H
+#include <bits/stdc++.h>
+#include "sort/sort.h"
+#include "utils/utils.h"
+#include "sort/heap.h"
+#endif
 
 // three road
 void three_quicsort(std::vector<int>& nums, int left, int right){
@@ -65,8 +71,29 @@ void insertsort(std::vector<int>& nums){
 }
 
 // heap sort
-void heapsort(std::vector<int>& nums){
+std::vector<int> heapsort(std::vector<int>& nums){
+    class cmp{
+    public:
+        bool operator()(int& a, int& b){
+            if(a < b){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    };
+    sort::Heap<int, cmp> h;
+    std::vector<int> res;
+    for(auto& num : nums){
+        h.push(num);
+    }
 
+    while(!h.empty()){
+        res.push_back(h.top());
+        h.pop();
+    }
+
+    return res;
 }
 
 // bubble sort
@@ -91,22 +118,14 @@ void selectsort(std::vector<int>& nums){
     }
 }
 
-int main(){
-    std::vector<int> data = {2,3,5,7,3,5,1,4,5,6,24};
+// merge sort
+void mergesort(std::vector<int>& nums){
 
-    for(auto& p : data){
-        std::cout << p << ' ';
+    int l=1;
+    int max_size = nums.size();
+    while(l <= max_size / 2){
+
+
+        l *= 2;
     }
-    std::cout << std::endl;
-
-    // quicksort(data, 0, data.size()-1);
-    insertsort(data);
-
-    for(auto& p : data){
-        std::cout << p << ' ';
-    }
-    std::cout << std::endl;
-
-    return 0;
 }
-
